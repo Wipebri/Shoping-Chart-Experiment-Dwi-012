@@ -55,3 +55,13 @@ setelah menekan clear maka semua produk di keranjang akan hilang dan logo tong s
 <img width="200" height="917" alt="image" src="https://github.com/user-attachments/assets/3ef73928-4c19-4529-bb79-633250b1627e" />
 
 jika menekan tombol continue shoping, akan di arahkan kembali ke menu awal untuk memilih produk. karena tadi isi keranjang sudah di bersihkan maka angk di pojok kanan atas juga ikut hilang.
+
+# Modifikasi Kode
+<img width="400" height="643" alt="image" src="https://github.com/user-attachments/assets/86661e6c-46c4-4a9e-ad27-850ae886f28c" />
+
+Kode diatas menambahkan produk yaitu Mic dan juga Keyboard pada file product_list_page.dart
+
+<img width="200" height="901" alt="image" src="https://github.com/user-attachments/assets/aca7a303-ebfd-4bad-8695-1e52c5805fcf" />
+
+Terlihat produk yang ditambahkan sudah muncul pada gambar
+
