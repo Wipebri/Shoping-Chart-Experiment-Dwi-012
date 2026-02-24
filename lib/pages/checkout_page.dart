@@ -66,7 +66,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
             TextField(
               controller: nameController,
               decoration: const InputDecoration(
-                labelText: 'Full Name',
+                labelText: 'Name',
                 border: OutlineInputBorder(),
               ),
             ),

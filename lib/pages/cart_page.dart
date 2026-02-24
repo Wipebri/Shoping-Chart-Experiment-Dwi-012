@@ -1,7 +1,7 @@
-// lib/pages/cart_page.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/cart_model.dart';
+import 'checkout_page.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -12,7 +12,6 @@ class CartPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Shopping Cart'),
         actions: [
-          // Clear cart button
           Consumer<CartModel>(
             builder: (context, cart, child) {
               return cart.isEmpty
@@ -20,12 +19,12 @@ class CartPage extends StatelessWidget {
                   : IconButton(
                       icon: const Icon(Icons.delete_outline),
                       onPressed: () {
-                        // Show confirmation dialog
                         showDialog(
                           context: context,
                           builder: (ctx) => AlertDialog(
                             title: const Text('Clear Cart?'),
-                            content: const Text('Remove all items from cart?'),
+                            content:
+                                const Text('Remove all items from cart?'),
                             actions: [
                               TextButton(
                                 onPressed: () => Navigator.pop(ctx),
@@ -95,7 +94,7 @@ class CartPage extends StatelessWidget {
                         padding: const EdgeInsets.all(8),
                         child: Row(
                           children: [
-                            // Product emoji
+                            // Emoji
                             Container(
                               width: 80,
                               height: 80,
@@ -106,15 +105,18 @@ class CartPage extends StatelessWidget {
                               child: Center(
                                 child: Text(
                                   product.emoji,
-                                  style: const TextStyle(fontSize: 40),
+                                  style:
+                                      const TextStyle(fontSize: 40),
                                 ),
                               ),
                             ),
                             const SizedBox(width: 12),
-                            // Product info
+
+                            // Info
                             Expanded(
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment:
+                                    CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     product.name,
@@ -123,7 +125,8 @@ class CartPage extends StatelessWidget {
                                       fontSize: 16,
                                     ),
                                     maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
+                                    overflow:
+                                        TextOverflow.ellipsis,
                                   ),
                                   const SizedBox(height: 4),
                                   Text(
@@ -134,55 +137,59 @@ class CartPage extends StatelessWidget {
                                     ),
                                   ),
                                   const SizedBox(height: 8),
+
                                   // Quantity controls
                                   Row(
                                     children: [
                                       IconButton(
                                         onPressed: () {
-                                          cart.decreaseQuantity(product.id);
+                                          cart.decreaseQuantity(
+                                              product.id);
                                         },
-                                        icon: const Icon(Icons.remove_circle_outline),
-                                        constraints: const BoxConstraints(),
-                                        padding: EdgeInsets.zero,
+                                        icon: const Icon(
+                                            Icons.remove_circle_outline),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                                        padding:
+                                            const EdgeInsets.symmetric(
+                                                horizontal: 12),
                                         child: Text(
                                           '${cartItem.quantity}',
-                                          style: const TextStyle(
+                                          style:
+                                              const TextStyle(
                                             fontSize: 16,
-                                            fontWeight: FontWeight.bold,
+                                            fontWeight:
+                                                FontWeight.bold,
                                           ),
                                         ),
                                       ),
                                       IconButton(
                                         onPressed: () {
-                                          cart.increaseQuantity(product.id);
+                                          cart.increaseQuantity(
+                                              product.id);
                                         },
-                                        icon: const Icon(Icons.add_circle_outline),
-                                        constraints: const BoxConstraints(),
-                                        padding: EdgeInsets.zero,
+                                        icon: const Icon(
+                                            Icons.add_circle_outline),
                                       ),
                                     ],
                                   ),
                                 ],
                               ),
                             ),
-                            // Remove button & subtotal
+
+                            // Delete + subtotal
                             Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
+                              crossAxisAlignment:
+                                  CrossAxisAlignment.end,
                               children: [
                                 IconButton(
                                   onPressed: () {
                                     cart.removeItem(product.id);
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text('${product.name} removed'),
-                                        duration: const Duration(seconds: 1),
-                                      ),
-                                    );
                                   },
-                                  icon: const Icon(Icons.delete, color: Colors.red),
+                                  icon: const Icon(
+                                    Icons.delete,
+                                    color: Colors.red,
+                                  ),
                                 ),
                                 Text(
                                   'Rp ${cartItem.totalPrice.toStringAsFixed(0)}',
@@ -200,7 +207,8 @@ class CartPage extends StatelessWidget {
                   },
                 ),
               ),
-              // Total price bar
+
+              // Bottom Total Bar
               Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
@@ -215,10 +223,12 @@ class CartPage extends StatelessWidget {
                 ),
                 child: SafeArea(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment:
+                        MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment:
+                            CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           const Text(
@@ -238,38 +248,23 @@ class CartPage extends StatelessWidget {
                           ),
                         ],
                       ),
+
+                      // CHECKOUT BUTTON
                       ElevatedButton(
-                        onPressed: () {
-                          // Checkout action
-                          showDialog(
-                            context: context,
-                            builder: (ctx) => AlertDialog(
-                              title: const Text('Checkout'),
-                              content: Text(
-                                'Total: Rp ${cart.totalPrice.toStringAsFixed(0)}\nItems: ${cart.totalQuantity}',
-                              ),
-                              actions: [
-                                TextButton(
-                                  onPressed: () => Navigator.pop(ctx),
-                                  child: const Text('Cancel'),
-                                ),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    cart.clear();
-                                    Navigator.pop(ctx);
-                                    Navigator.pop(context);
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(content: Text('Order placed!')),
-                                    );
-                                  },
-                                  child: const Text('Confirm'),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
+                        onPressed: cart.isEmpty
+                            ? null
+                            : () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const CheckoutPage(),
+                                  ),
+                                );
+                              },
                         style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(
+                          padding:
+                              const EdgeInsets.symmetric(
                             horizontal: 40,
                             vertical: 16,
                           ),
