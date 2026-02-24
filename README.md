@@ -57,6 +57,17 @@ setelah menekan clear maka semua produk di keranjang akan hilang dan logo tong s
 jika menekan tombol continue shoping, akan di arahkan kembali ke menu awal untuk memilih produk. karena tadi isi keranjang sudah di bersihkan maka angk di pojok kanan atas juga ikut hilang.
 
 # Modifikasi Kode
+## Menambah Search/Filter
+<img width="200" height="1094" alt="image" src="https://github.com/user-attachments/assets/ef973dc2-e187-46e9-8ca1-d174c4b88bd1" />
+
+Pada gambar diatas ditambahkan fitur Seaching untuk mencari nama barang dan filtering berdasarkan kategorinya
+
+## Membuat kategori
+<img width="200" height="643" alt="image" src="https://github.com/user-attachments/assets/438b7a45-6d71-487e-999e-71f70d94464b" />
+
+Kode diatas membuat kategori untuk produk-produk yang tersedia, contohnya electrionic dan accesoris. nantinya kategori ini dapat membantu dalam proses filtering produk.
+
+## Menambah Produk
 <img width="400" height="643" alt="image" src="https://github.com/user-attachments/assets/86661e6c-46c4-4a9e-ad27-850ae886f28c" />
 
 Kode diatas menambahkan produk yaitu Mic dan juga Keyboard pada file product_list_page.dart
