@@ -76,7 +76,8 @@ setelah menekan clear maka semua produk di keranjang akan hilang dan logo tong s
 <img width="200" height="917" alt="image" src="https://github.com/user-attachments/assets/788b26bb-3e71-4f55-a82a-ad03b3d1084e" />
 
 terlihat aplkasi sudah menampilkan total harga yanng harus dibayar
-# Fitur atau Kode Tambahan
+
+## Fitur atau Kode Tambahan
 ### Search/Filter
 <img width="200" height="1094" alt="image" src="https://github.com/user-attachments/assets/ef973dc2-e187-46e9-8ca1-d174c4b88bd1" />
 
